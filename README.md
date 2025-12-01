@@ -1,4 +1,4 @@
-#About
+# About
 These are various LaTeX and XeTeX typesets I've done over the years. My work here is licensed under the GPL-3 General Public License; if, for some reason, this does not meet your needs, feel free to reach out to me at code@haunteddolllovers.net - this is really hobby stuff, anyways. 
 
 # Projects 
