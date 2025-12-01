@@ -1,0 +1,208 @@
+\documentclass[12pt, twoside, openright]{memoir}
+\newcommand{\bindingoffset}{0.0in}
+\usepackage{fontspec,kantlipsum}
+\setstocksize{8.5in}{5.5in}
+\paperwidth 5.5in
+\paperheight 8.5in
+\usepackage{rotating}
+\usepackage{geometry}
+\usepackage{tgtermes}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{pgf}
+\renewcommand{\chaptername}{Chapter}
+\PassOptionsToPackage{svgnames}{xcolor}
+\usepackage[object=vectorian]{pgfornament} %%  http://altermundus.com/pages/tkz/ornament/index.html
+\usepackage{lipsum,tikz}
+\usepackage{lettrine}
+\usepackage{pgfornament-han}
+\usepackage{titlesec}
+\usepackage[dotinlabels]{titletoc}
+\usepackage{tocbasic}
+\geometry{ margin=0.75in, tmargin=1in, bmargin=0.8in, bindingoffset=\bindingoffset}
+
+\font \stamphg="[./Fonts/copasetic.ttf]" at 70pt
+\font \stampmd="[./Fonts/copasetic.ttf]" at 40pt
+\font \stampsm="[./Fonts/copasetic.ttf]" at 20pt
+
+\title{The Great Gatsby}
+\author{F. Scott Fitzgerald}
+%% BEGIN TITLE
+
+\def\maketitle{%
+	\null
+	\thispagestyle{empty}%
+	\vfill
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=north west] at (current page.north west){
+			%
+			\hskip \bindingoffset \pgfornamenthan[width=3cm]{11}};
+		\node[anchor=north east] at (current page.north east){
+			%
+			\pgfornamenthan[width=3cm,symmetry=v]{11}};
+		\node[anchor=south west] at (current page.south west){
+			%
+			\hskip \bindingoffset \pgfornamenthan[width=3cm,symmetry=h]{11}};
+		\node[anchor=south east] at (current page.south east){
+			%
+			\pgfornamenthan[width=3cm,symmetry=c]{11}};
+	\end{tikzpicture}
+	\begin{center}\leavevmode
+		\normalfont
+		{\huge\center
+			\stamphg The Great Gatsby
+			\par}%
+		
+		\vskip 2cm
+		\stampmd F. Scott Fitzgerald
+		%    {\Large \@date\par}%
+	\end{center}%
+	\vfill
+}
+
+\date{}
+%%% BEGIN DOCUMENT
+
+% font features set according to the copies of the fonts I have
+\setmainfont{Garamond}
+\begin{document}
+	\newpage\null\thispagestyle{empty}\newpage\newpage\null\thispagestyle{empty}\newpage
+	
+	\pagenumbering{gobble}
+	\maketitle
+	
+	\newpage\null
+	
+	\begin{center}
+		Typeset by Github user luke-hdl. \vskip 0.2cm
+		
+		The title font, Nick Curtis' Copasetic, is used under the 1001Fonts Free For Commercial Use License (FFC)
+				
+		\vskip 0.5cm
+		
+		This formatted and typeset PDF is licensed under the GNU GPL-3 License: https://www.gnu.org/licenses/gpl-3.0.en.html
+		
+		\vskip 0.5cm 
+		
+		However, The Great Gatsby is public domain. You should feel free to typeset it yourself and share the love! 
+	\end{center}
+	
+	\vskip 1cm
+	
+	\newpage\null\thispagestyle{empty}
+	\newcommand{\sep}{\vskip 0.3cm\begin{center}\pgfornamenthan[width=1cm]{41}\end{center}\vskip 0.3cm}
+	\renewcommand\cftchapteraftersnumb{\normalfont}
+	\renewcommand\cftbeforechapterskip{1.5pt}
+	% Table of Contents
+	
+	\begin{KeepFromToc}
+		%\renewcommand*\contentsname{Chapters}\makeatletter
+		\renewcommand\cftchapteraftersnumb{\normalfont}
+		
+		\renewcommand{\printtoctitle}[1]{\stampmd Contents}
+		\renewcommand{\aftertoctitle}{\vskip 0.25cm}
+		%\tableofcontents
+		\markboth{}{}
+	\end{KeepFromToc}
+	
+	%\chapterstyle{demo}
+	
+	\OnehalfSpacing
+	\makechapterstyle{gatsbychapter}{%
+		
+	
+	\renewcommand{\chapternamenum}{}
+		\renewcommand{\chapnumfont}{\stampmd\Huge\bfseries}
+		\renewcommand{\printchapternum}{
+			\thispagestyle {empty}
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[anchor=north west] at (current page.north west){
+					%
+					\hskip \bindingoffset \pgfornamenthan[width=3cm]{11}};
+				\node[anchor=north east] at (current page.north east){
+					%
+					\pgfornamenthan[width=3cm,symmetry=v]{11}};
+				\node[anchor=south west] at (current page.south west){
+					%
+					\hskip \bindingoffset \pgfornamenthan[width=3cm,symmetry=h]{11}};
+				\node[anchor=south east] at (current page.south east){
+					%
+					\pgfornamenthan[width=3cm,symmetry=c]{11}};
+			\end{tikzpicture}
+			\begin{center}\stamphg\thechapterletter\end{center}
+			}
+	\renewcommand{\afterchapternum}{}
+	\renewcommand{\printchaptertitle}[1]{}
+	\renewcommand{\printchaptername}{}
+	
+	}
+	%\chapterstyle{lyhne}
+	\chapterstyle{gatsbychapter}
+	
+	\begin{quote}\textit{
+		Then wear the gold hat, if that will move her;\\
+		If you can bounce high, bounce for her too,\\
+		Till she cry ``Lover, gold-hatted, high-bouncing lover,\\
+		I must have you!''
+	}
+	\end{quote}
+	\begin{quote}
+	\stampsm Thomas Parke d'Invilliers
+	\end{quote}
+
+	\newcommand{\thechapterletter}{One}
+	\renewcommand{\thechapter}{1}
+	\pagenumbering{arabic}
+	\chapter{One}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter1}
+	
+	\renewcommand{\thechapterletter}{Two}
+	\renewcommand{\thechapter}{2}
+	\chapter{Two}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter2}
+	
+	\renewcommand{\thechapterletter}{Three}
+	\renewcommand{\thechapter}{3}
+	\chapter{Three}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter3}
+	
+	\renewcommand{\thechapterletter}{Four}
+	\renewcommand{\thechapter}{4}
+	\chapter{Four}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter4}
+	
+	\renewcommand{\thechapterletter}{Five}
+	\renewcommand{\thechapter}{5}
+	\chapter{Five}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter5}
+	
+	\renewcommand{\thechapterletter}{Six}
+	\renewcommand{\thechapter}{6}
+	\chapter{Six}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter6}
+	
+	\renewcommand{\thechapterletter}{Seven}
+	\renewcommand{\thechapter}{7}
+	\chapter{Seven}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter7}
+	
+	\renewcommand{\thechapterletter}{Eight}
+	\renewcommand{\thechapter}{8}
+	\chapter{Eight}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter8}
+	
+	\renewcommand{\thechapterletter}{Nine}
+	\renewcommand{\thechapter}{9}
+	\chapter{Nine}
+	\markboth{\thechapterletter}{The Great Gatsby}
+	\include{./Chapters/chapter9}
+	
+\end{document}

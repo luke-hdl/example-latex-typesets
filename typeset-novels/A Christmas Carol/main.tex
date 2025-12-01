@@ -1,0 +1,170 @@
+\documentclass[12pt, twoside, openright]{memoir}
+\newcommand{\bindingoffset}{0.0in}
+\usepackage{fontspec,kantlipsum}
+\setstocksize{8.5in}{5.5in}
+\paperwidth 5.5in
+\paperheight 8.5in
+\usepackage{rotating}
+\usepackage{geometry}
+\usepackage{tgtermes}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{pgf}
+\renewcommand{\chaptername}{Chapter}
+\PassOptionsToPackage{svgnames}{xcolor}
+\usepackage[object=vectorian]{pgfornament} %%  http://altermundus.com/pages/tkz/ornament/index.html
+\usepackage{lipsum,tikz}
+\usepackage{lettrine}
+\usepackage{pgfornament-han}
+\usepackage{titlesec}
+\usepackage[dotinlabels]{titletoc}
+\usepackage{tocbasic}
+\geometry{ margin=0.75in, tmargin=1in, bmargin=0.8in, bindingoffset=\bindingoffset}
+
+\font \stamphg="[./Fonts/Playball-Regular.ttf]" at 70pt
+\font \stampmd="[./Fonts/Playball-Regular.ttf]" at 40pt
+\font \stampsm="[./Fonts/Playball-Regular.ttf]" at 20pt
+
+\title{A Christmas Carol}
+\author{Charles Dickens}
+
+\def\maketitle{%
+	\null
+	\thispagestyle{empty}%
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=north west] at (current page.north west){
+			%
+			\hskip \bindingoffset \pgfornament[width=3cm]{35}};
+		\node[anchor=north east] at (current page.north east){
+			%
+			\pgfornament[width=3cm,symmetry=v]{35}};
+		\node[anchor=south west] at (current page.south west){
+			%
+			\hskip \bindingoffset \pgfornament[width=3cm,symmetry=h]{35}};
+		\node[anchor=south east] at (current page.south east){
+			%
+			\pgfornament[width=3cm,symmetry=c]{35}};
+	\end{tikzpicture}
+	\begin{center}\leavevmode
+		\normalfont
+		{\huge\center
+			\stamphg A Christmas Carol
+			\par}%
+		
+		\vskip 2cm
+		\stampmd Charles Dickens
+		%    {\Large \@date\par}%
+	\end{center}%
+	\vfill
+}
+
+\date{}
+%%% BEGIN DOCUMENT
+
+% font features set according to the copies of the fonts I have
+\setmainfont{Garamond}
+\begin{document}
+	\newpage\null\thispagestyle{empty}\newpage\newpage\null\thispagestyle{empty}\newpage
+	
+	\pagenumbering{gobble}
+	\maketitle
+	
+	\newpage\null
+	
+	\begin{center}
+		Typeset by Github user luke-hdl, with thanks to: \vskip 0.2cm
+		
+		The Playball Project Authors for the title font, Playball, used under the Open Font License (OFL).
+		
+		\vskip 0.5cm
+		
+		This formatted and typeset PDF is licensed under the GNU GPL-3 License: https://www.gnu.org/licenses/gpl-3.0.en.html
+		
+		\vskip 0.5cm 
+		
+		However, A Christmas Carol is public domain. You should feel free to typeset it yourself and share the love! 
+	
+	\end{center}
+	
+	\vskip 1cm
+	
+	\newcommand{\sep}{\vskip 0.1cm\begin{center}\pgfornament[width=2cm]{79}\end{center}\vskip 0.1cm}
+	\renewcommand\cftchapteraftersnumb{\normalfont}
+	\renewcommand\cftbeforechapterskip{1.5pt}
+	% Table of Contents
+	
+	\begin{KeepFromToc}
+		%\renewcommand*\contentsname{Chapters}\makeatletter
+		\renewcommand\cftchapteraftersnumb{\normalfont}
+		
+		\renewcommand{\printtoctitle}[1]{\stampmd Contents}
+		\renewcommand{\aftertoctitle}{\vskip 0.25cm}
+		%\tableofcontents
+		\markboth{}{}
+	\end{KeepFromToc}
+	
+	%\chapterstyle{demo}
+	
+	\OnehalfSpacing
+	\makechapterstyle{carolstyle}{%
+		
+		\renewcommand{\chapternamenum}{}
+		\renewcommand{\chapnumfont}{\stampmd\Huge\bfseries}
+		\renewcommand{\printchapternum}{
+			\thispagestyle {empty}
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[anchor=north west] at (current page.north west){
+					%
+					\pgfornament[width=3cm]{35}};
+				\node[anchor=north east] at (current page.north east){
+					%
+					\pgfornament[width=3cm,symmetry=v]{35}};
+				\node[anchor=south west] at (current page.south west){
+					%
+					\pgfornament[width=3cm,symmetry=h]{35}};
+				\node[anchor=south east] at (current page.south east){
+					%
+					\pgfornament[width=3cm,symmetry=c]{35}};
+			\end{tikzpicture}
+			\begin{center}\stamphg\thechapterletter\vskip 1cm\stampmd\thechaptertitle\end{center}
+		}
+		\renewcommand{\afterchapternum}{}
+		\renewcommand{\printchaptertitle}[1]{}
+		\renewcommand{\printchaptername}{}
+		
+	}
+
+	\chapterstyle{carolstyle}
+	
+	\newcommand{\thechapterletter}{One}
+	\newcommand{\thechaptertitle}{Marley's Ghost}
+	\pagenumbering{arabic}
+	\chapter{Marley's Ghost}
+	\markboth{\thechaptertitle}{A Christmas Carol}
+	\include{./Chapters/chapter1}
+	
+	\renewcommand{\thechapterletter}{Two}
+	\renewcommand{\thechaptertitle}{The First of the Three Spirits}
+	\chapter{The First of the Three Spirits}
+	\markboth{\thechaptertitle}{A Christmas Carol}
+	\include{./Chapters/chapter2}
+	
+	\renewcommand{\thechapterletter}{Three}
+	\renewcommand{\thechaptertitle}{The Second of the Three Spirits}
+	\chapter{The Second of the Three Spirits}
+	\markboth{\thechaptertitle}{A Christmas Carol}
+	\include{./Chapters/chapter3}
+	
+	\renewcommand{\thechapterletter}{Four}
+	\renewcommand{\thechaptertitle}{The Last of the Spirits}
+	\chapter{The Last of the Spirits}
+	\markboth{\thechaptertitle}{A Christmas Carol}
+	\include{./Chapters/chapter4}
+	
+	\renewcommand{\thechapterletter}{Five}
+	\renewcommand{\thechaptertitle}{The End of It}
+	\chapter{The End of It}
+	\markboth{\thechaptertitle}{A Christmas Carol}
+	\include{./Chapters/chapter5}
+	
+\end{document}
