@@ -1,0 +1,43 @@
+% Sample TeX file that uses Tikz, Calc, and XString to draw "Sudoku Pages" for puzzle books, etc.
+% The sudoku used is in this format: ~5~7~3~6~~~7~~~8~~~~~816~~~~~~~3~~~~~~5~~~1~~73~~4~~869~6~~~2~484~572~93~~~4~9~~~
+% where ~ represent a spot that begins blank. It is read from the top-left corner, going right, then wrapping every 9.
+% The format used is based on the Sudoku Exchange puzzle bank, which generates puzzles with QQWing Sudoku and grades them with Sukaku Explainer. Note that Sukaku's "easy" rating is still relatively hard compared to many syndicated sudoku. A Python script is included in the /puzzles directory to strip out difficulty numbers, etc. so that you can directly copy and paste Sudoku Exchange puzzles into this template. 
+% These puzzles are public domain. Several files of puzzles are included in this repo. 
+
+\documentclass[12pt, twoside, openright]{memoir} 
+\usepackage{tikz}
+\usepackage{pgffor}
+\usepackage{calc}
+\usepackage{xstring}
+
+\newcounter{endx}
+\newcounter{endy}
+\newcounter{offset}
+\newcounter{square}
+\def\sudoku#1#2#3#4{
+	%args: 
+	%#1 - Size - in CM
+	%#2 - Start X
+	%#3 - Start Y
+	%#4 - Sudoku contents
+	\begin{tikzpicture}
+	\setcounter{endx}{#2+9*#1}
+	\setcounter{endy}{#3+9*#1}
+
+	\draw[step=#1cm,gray,very thin] (#2,#3) grid (\theendx, \theendy);
+	    \foreach \x in {0,...,8}{
+	    	\foreach \y in {1, ..., 9}{
+			\setcounter{square}{\x*9+\y}
+			\node at (\y*#1+#3*#1+0.5*#1-1*#1,
+			8-\x*#1+#2*#1+0.5*#1){\StrMid{#4}{\thesquare}{\thesquare}};
+    	}	
+	}
+	
+	\draw[step=3*#1cm,black,thick] (#2,#3) grid (\theendx, \theendy);
+	\end{tikzpicture}
+}
+
+\begin{document}
+\sudoku{1}{0}{0}{~5~7~3~6~~~7~~~8~~~~~816~~~~~~~3~~~~~~5~~~1~~73~~4~~869~6~~~2~484~572~93~~~4~9~~~}
+
+\end{document}
