@@ -1,0 +1,149 @@
+\documentclass[12pt, twoside, openany]{memoir}
+
+\usepackage{fontspec,kantlipsum}
+\setstocksize{108mm}{69.75mm}
+\paperwidth 69.75mm
+\paperheight 108mm
+\usepackage{rotating}
+\usepackage{geometry}
+\usepackage{tgtermes}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{pgf}
+\PassOptionsToPackage{svgnames}{xcolor}
+\usepackage{pgfornament} %%  http://altermundus.com/pages/tkz/ornament/index.html
+\usepackage{lipsum,tikz}
+\usepackage{lettrine}
+\usepackage{titlesec}
+\usepackage[dotinlabels]{titletoc}
+\usepackage{tocbasic}
+\geometry{ margin=0.4in, tmargin=0.65in, bmargin=0.4in, bindingoffset=0in}
+\newcommand{\corneroffset}{0.08in}
+
+\font \garasmall = "[./Fonts/EbGaramondSmallCaps.ttf]" at 18pt
+\font \tinyfont = "[./Fonts/EbGaramondSmallCaps.ttf]" at 6pt
+
+% See the ``Memoir customise'' template for some common customisations
+% Don't forget to read the Memoir manualmemman.pdf
+%% BEGIN TITLE
+\newcommand{\drawframe}{
+		\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=north west][shift={(\corneroffset, -\corneroffset)}] at (current page.north west){
+			%
+			\pgfornament[width=1.5cm]{39}};
+		\node[anchor=north east][shift={(-\corneroffset, -\corneroffset)}] at (current page.north east){
+			%
+			\pgfornament[width=1.5cm,symmetry=v]{39}};
+		\node[anchor=south west][shift={(\corneroffset, \corneroffset)}] at (current page.south west){
+			%
+			\pgfornament[width=1.5cm,symmetry=h]{39}};
+		\node[anchor=south east][shift={(-\corneroffset, \corneroffset)}] at (current page.south east){
+			%
+			\pgfornament[width=1.5cm,symmetry=c]{39}};
+\end{tikzpicture}}
+\def\maketitle{%
+	\null
+	\thispagestyle{empty}%
+	\vfill
+	
+	\begin{center}\leavevmode
+		\normalfont
+		\drawframe
+		{\center\garasmall Sample Tiny Book
+			\par}%
+		
+		\vskip 2cm
+		\garasmall luke-hdl
+		%    {\Large \@date\par}%
+	\end{center}%
+	\vfill
+}
+
+\date{}
+%%% BEGIN DOCUMENT
+\newcommand\speaker[1]{\vskip 0.3cm\emph{\garasmall#1}\vskip 0.1cm}
+\newcommand\direct[1]{\vskip 0.3cm\emph{#1}\vskip 0.1cm}
+\newcommand\inlineDirect[1]{\emph{#1}\hskip 0.2cm}
+\fontfamily{Garamond}
+\fontsize{12}{0}
+
+
+\makechapterstyle{decoratedTiny}{
+	\renewcommand{\chapternamenum}{}
+	\renewcommand{\printchapternum}{
+		\thispagestyle {empty}
+		\drawframe
+		\begin{center}\garasmall\thechaptertitle\newpage\end{center}
+	}
+	\renewcommand{\afterchapternum}{}
+	\renewcommand{\printchaptertitle}[1]{}
+	\renewcommand{\printchaptername}{}
+}
+
+% font features set according to the copies of the fonts I have
+\begin{document}
+	\newpage\null\thispagestyle{empty}\newpage\newpage\null\thispagestyle{empty}\newpage
+	
+	\pagenumbering{gobble}
+	\maketitle
+	
+	\newpage\null
+	\newpage
+	
+	This is a sample tiny book, produced by github user luke-hdl. 
+	%License: GNU GPL v3. 
+	
+	For practical reasons, it uses ragged right and open-either, which allow for a more compact book. Larger books will usually have justified text and open-right. (Also, open-right acts funky with ragged right sometimes.)
+	
+	If using letter paper, you can take the output and run it through this website, choosing Octavo:
+	
+	\noindent\tinyfont https://momijizukamori.github.io/bookbinder-js/
+	 
+	
+	\newpage\null
+	\newpage
+	
+	\newcommand{\scenebreak}{\begin{center}\pgfornament[width=3cm]{80}\end{center}}
+	\OnehalfSpacing
+	
+
+	\chapterstyle{decoratedTiny}
+	\newcommand{\thechaptertitle}{The quick brown fox jumps over the lazy dog}
+	\chapter{\thechaptertitle}
+	\markboth{}{}
+	\pagenumbering{arabic}
+	\raggedright
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\scenebreak
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\renewcommand{\thechaptertitle}{Sphinx of black quartz, judge my vow}
+	\chapter{\thechaptertitle}
+	\markboth{}{}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	\renewcommand{\thechaptertitle}{Pack my box with five dozen liquor jugs}
+	\chapter{\thechaptertitle}
+	\markboth{}{}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+	
+	\renewcommand{\thechaptertitle}{How vexingly quick daft zebras jump}
+	\chapter{\thechaptertitle}
+	\markboth{}{}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	
+	\renewcommand{\thechaptertitle}{The five boxing wizards jump quickly}
+	\chapter{\thechaptertitle}
+	\markboth{}{}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	
+	\renewcommand{\thechaptertitle}{Jackdaws love my big sphinx of quartz}
+	\chapter{\thechaptertitle}
+	\markboth{}{}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	
+	
+	
+\end{document}

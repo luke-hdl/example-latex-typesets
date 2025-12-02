@@ -1,0 +1,18 @@
+\documentclass[]{article}
+\usepackage[paperheight=8.5in, paperwidth=5.5in, left=13mm, right=13mm, top=12mm, bottom=11mm, includefoot]{geometry}
+\usepackage{tikz}
+\pagenumbering{arabic}
+
+\newcommand\drawPage{
+	\centering
+	\begin{tikzpicture}
+		\draw[step=5mm,  lightgray, very thin] (0, 0) grid (11, 18);
+	\end{tikzpicture}
+	\newpage
+}
+
+\begin{document}	
+	\foreach \y in {1, ..., 256}{
+		\drawPage
+	}
+\end{document}
