@@ -1,0 +1,24 @@
+\documentclass[]{article}
+\usepackage[paperheight=8.5in, paperwidth=5.5in, left=13mm, right=13mm, top=12mm, bottom=11mm, includefoot]{geometry}
+\usepackage{tikz}
+\pagenumbering{arabic}
+
+\newcommand\drawPage{
+	\centering
+	\begin{tikzpicture}
+		\foreach \y in {1, ..., 26}{
+			\pgfmathsetmacro\yo{\y*0.7}
+			\foreach \x in {1,...,17}{
+				\pgfmathsetmacro\xo{\x*0.7}
+				\filldraw[gray](\xo, \yo) circle (0.5pt);
+			}
+		}
+	\end{tikzpicture}
+	\newpage
+}
+
+\begin{document}
+
+\drawPage
+
+\end{document}
