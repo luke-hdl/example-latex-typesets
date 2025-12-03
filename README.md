@@ -11,4 +11,7 @@ Public-domain works and lorem ipsum, typeset for **XeTeX**. Note that some of th
 The Christmas Carol and Great Gatsby typesets are half-letter typesets and a decent starting point for anyone who wants to bookbind text work using a standard home printer. The Minibook typeset is designed to be used in conjunction with the Octavo option at https://momijizukamori.github.io/bookbinder-js/ - with this, you can take the tiny PDF pages produced by this TeX file and arrange them onto standard letter paper to be cut, folded, and sewn. 
 
 ## Basic Notebooks
-Super-basic notebook grids, etc. for use in homemade notebooks. Currently I have dot-grid and grid in here, but I'd like to add some basic planner stuff. I should probably add lined too... even though I would rather use dot grid, myself :P
+Super-basic notebook grids, etc. for use in homemade notebooks: 
+* 5mm-grid-halfletter: 5mm half-letter grid paper. 
+* 7mm-dotgrid-halfletter: 7mm half-letter dot-grid paper. 
+* planner-midori: 8.25x4.5in four-week planner - with daily schedule and note pages as well as weekly spreads. 
