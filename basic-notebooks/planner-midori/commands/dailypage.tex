@@ -1,0 +1,70 @@
+% requires geometry and tikz, which are imported in the main file
+\font \terafordaily = "[./fonts/teranoptia/Teranoptia-Furiae.otf]" at 12pt
+% heads: a, e, i, m, p, s, v, y
+% mid: b, c, f, g, j, k, n, q, t, 
+% tail: d, h, l, o, r, u, x, z
+\newcommand{\littleguytop}{\terafordaily sjkl\normalfont}
+\newcommand{\littleguybottom}{\terafordaily SJZ \hskip 2in aqh \normalfont}
+\newcommand{\drawdailypage}{
+	\begin{center}
+	Today's Date: \hskip 2in \littleguytop
+	\vskip 2.5mm
+	\begin{tabular}{|m{16mm}|m{64mm}|}
+		\hline
+		Time & Plans \\
+		\hline
+		7:00am & \\
+		\hline
+		8:00am & \\
+		\hline
+		9:00am & \\
+		\hline
+		10:00am & \\
+		\hline
+		11:00am & \\
+		\hline
+		Noon & \\
+		\hline
+		1:00pm & \\
+		\hline
+		2:00pm & \\
+		\hline
+		3:00pm & \\
+		\hline
+		4:00pm & \\
+		\hline
+		5:00pm & \\
+		\hline
+		6:00pm & \\
+		\hline
+		7:00pm & \\
+		\hline
+		8:00pm & \\
+		\hline
+		9:00pm & \\
+		\hline
+		11:00pm & \\
+		\hline
+		Midnight & \\
+		\hline
+	\end{tabular}
+	
+	\begin{tikzpicture}
+		\draw[darkgray, semithick] (0,0.35) -- (0,7.65);
+		\draw[darkgray, semithick] (8.875,0.35) -- (8.875,7.65);
+		\draw[darkgray, semithick] (0,0.35) -- (8.875,0.35);
+		\draw[darkgray, semithick] (0,7.65) -- (8.875,7.65);
+		
+		\foreach \y in {1, ..., 15}{
+			\pgfmathsetmacro\yo{\y*0.5}
+			\foreach \x in {1,...,18}{
+				\pgfmathsetmacro\xo{\x*0.5-0.3}
+				\filldraw[darkgray](\xo, \yo) circle (0.3pt);
+			}
+		}
+		\path(0.75,7.25) node [behind path, fill=white!50]   {Notes};
+	\end{tikzpicture}
+	\vskip 2mm
+	\littleguybottom
+	\end{center}
+}

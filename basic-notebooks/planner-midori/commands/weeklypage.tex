@@ -1,0 +1,51 @@
+\font \teraforweekly = "[./fonts/teranoptia/Teranoptia-Furiae.otf]" at 12pt
+\font \teraforweeklybig = "[./fonts/teranoptia/Teranoptia-Furiae.otf]" at 36pt
+\font \playballbig = "[./fonts/playball/Playball-Regular.ttf]" at 36pt
+\newcommand{\weekpageleft}{
+	Affirmation: \hskip5.65cm \terafordaily SDB \normalfont
+	\vskip 2.5mm
+	\begin{tabular}{|m{12mm}|m{68mm}|}
+	\hline
+	Day & Plans \\
+	\hline
+	Mon & \\ & \\ & \\ & \\
+	\hline
+	Tue & \\ & \\ & \\ & \\
+	\hline
+	Wed & \\ & \\ & \\ & \\
+	\hline
+	Thur & \\ & \\ & \\ & \\
+	\hline
+	Fri & \\ & \\ & \\ & \\
+	\hline
+	Sat & \\ & \\ & \\ & \\
+	\hline
+	Sun & \\ & \\ & \\ & \\
+	\hline
+	\end{tabular} 
+	\vskip 5mm
+	 \teraforweeklybig atftfth \normalfont
+}
+
+\newcommand{\weekpageright}{
+	\teraforweekly źžE \normalfont \hskip5cm Weekly Goals
+	\vskip 2.5mm
+		\begin{tikzpicture}
+		\foreach \y in {1, ..., 25}{
+			\pgfmathsetmacro\yo{\y*0.65}
+			\draw[darkgray, semithick] (0,\yo) -- (8.875,\yo);
+		}
+		\end{tikzpicture}
+	\vskip 5mm
+	\teraforweeklybig SPGTUẊż \normalfont
+}
+
+\newcommand{\weekpagestart}{
+	\begin{center}
+	\teraforweeklybig AB yz \normalfont
+	\vskip .5cm
+	\playballbig Week Of \normalfont
+	\vskip 14cm
+	\teraforweeklybig źPGTUẊż \normalfont
+	\end{center}
+}
