@@ -1,0 +1,25 @@
+\documentclass[12pt, twoside, openany]{memoir}
+\paperwidth 4.5in
+\paperheight 8.25in
+\setstocksize{8.25in}{4.5in}
+
+\usepackage{geometry}
+\usepackage{tikz}
+\geometry{ margin=0.4in, lmargin=0.35in, tmargin=0.5in, bmargin=0.4in, bindingoffset=0in}
+\include{commands/weeklypage.tex}
+\include{commands/dailypage.tex}
+\pagenumbering{gobble}
+\begin{document}
+	\foreach \wk in {1, ..., 4}{
+		\weekpagestart
+		\newpage
+		\weekpageleftdateless
+		\newpage
+		\weekpageright
+		\newpage
+		\foreach \pg in {1, ..., 7}{
+			\drawdailypage
+			\newpage
+		}
+	}
+\end{document}
